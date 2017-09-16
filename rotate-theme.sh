@@ -24,7 +24,7 @@ echo "${theme_id}" > /tmp/termtheme
 
 bcimgnum=$(( ( RANDOM % 10 ) + 1 ))
 
-xrdb ~/.Xresources
+sed '/^#/ d' < ~/.Xresources | xrdb -
 xrdb -merge "${themedir}/${theme[$theme_id]}" 
 echo urxvt -pixmap "${themedir}/res/bcimg${foldnum}.png" $@
 
